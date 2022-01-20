@@ -1,5 +1,4 @@
 import java.util.concurrent.Semaphore;
-import java.util.Random;
 class Student implements Runnable
 {
 	// Time to program before asking for help (in seconds).
@@ -37,9 +36,8 @@ class Student implements Runnable
 			try
 			{
 				// Program first.
-				System.out.println("Student " + studentNum + " has started programming for " +
-							programTime + " seconds.");
-				t.sleep(programTime * 1000);
+				System.out.println("Student " + studentNum + " has started programming for " + programTime + " seconds.");
+				Thread.sleep(programTime * 1000);
 				// Check to see if TA is available first.
 				System.out.println("Student " + studentNum + " is checking to see if TA is available.");
 				if (available.tryAcquire())
@@ -50,7 +48,7 @@ class Student implements Runnable
 						wakeup.take();
 						System.out.println("Student " + studentNum + " has woke up the TA.");
 						System.out.println("Student " + studentNum + " has started working with the TA.");
-						t.sleep(5000);
+						Thread.sleep(5000);
 						System.out.println("Student " + studentNum + " has stopped working with the TA.");
 					}
 					catch (InterruptedException e)
@@ -76,27 +74,26 @@ class Student implements Runnable
 									+ "He is #" + ((3 - chairs.availablePermits())) + " in line.");
 							available.acquire();
 							System.out.println("Student " + studentNum + " has started working with the TA.");
-							t.sleep(5000);
+							Thread.sleep(5000);
 							System.out.println("Student " + studentNum + " has stopped working with the TA.");
 							available.release();
 						}
 						catch (InterruptedException e)
 						{
-							// Something bad happened.
 							continue;
 						}
 					}
 					else
-	{
-	System.out.println("Student " + studentNum + " could not see the TA and all chairs were taken. Back to programming!");
-	}
-	}
-	}
-	catch (InterruptedException e)
-	{
-	break;
-	}
-	}
+					{
+						System.out.println("Student " + studentNum + " could not see the TA and all chairs were taken. Back to programming!");
+					}
+				}
+			}
+			catch (InterruptedException e)
+			{
+				break;
+			}
+		}
 	}
 }
 /**
