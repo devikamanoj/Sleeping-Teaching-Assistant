@@ -70,8 +70,7 @@ class Student implements Runnable
 						try
 						{
 							// Wait for TA to finish with other student.
-							System.out.println("Student " + studentNum + " is sitting outside the office. "
-									+ "He is #" + ((3 - chairs.availablePermits())) + " in line.");
+							System.out.println("Student " + studentNum + " is sitting outside the office. "+ "He is #" + ((Main.chair - chairs.availablePermits())) + " in line.");
 							available.acquire();
 							System.out.println("Student " + studentNum + " has started working with the TA.");
 							Thread.sleep(5000);

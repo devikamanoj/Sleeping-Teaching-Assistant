@@ -3,8 +3,10 @@ import java.util.*;
 public class Main
 {
 	static Scanner in = new Scanner(System.in);
+	static int chair;
 	public static void main(String[] args)
 	{
+		System.out.println();
 		System.out.println("			SLEEPING TEACHING ASSISTANT");
 		System.out.println("			---------------------------");
 		System.out.println();
@@ -14,7 +16,7 @@ public class Main
 		// Create semaphores.
 		SignalSemaphore wakeup = new SignalSemaphore();
 		System.out.print("\n Enter the number of chairs available: ");
-		int chair=in.nextInt();
+		chair=in.nextInt();
 		Semaphore chairs = new Semaphore(chair);
 		Semaphore available = new Semaphore(1);
 		// Used for randomly generating program time.
