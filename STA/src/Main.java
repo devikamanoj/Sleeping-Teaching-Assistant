@@ -1,14 +1,21 @@
 import java.util.concurrent.Semaphore;
-import java.util.Random;
+import java.util.*;
 public class Main
 {
+	static Scanner in = new Scanner(System.in);
 	public static void main(String[] args)
 	{
+		System.out.println("			SLEEPING TEACHING ASSISTANT");
+		System.out.println("			---------------------------");
+		System.out.println();
+		System.out.print(" Enter the number of students in the lab: ");
 		// Number of students.
-		int numberofStudents = 5;
+		int numberofStudents = in.nextInt();
 		// Create semaphores.
 		SignalSemaphore wakeup = new SignalSemaphore();
-		Semaphore chairs = new Semaphore(3);
+		System.out.print("\n Enter the number of chairs available: ");
+		int chair=in.nextInt();
+		Semaphore chairs = new Semaphore(chair);
 		Semaphore available = new Semaphore(1);
 		// Used for randomly generating program time.
 		Random studentWait = new Random();
