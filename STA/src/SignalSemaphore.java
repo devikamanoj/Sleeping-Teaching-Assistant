@@ -14,7 +14,3 @@ class SignalSemaphore
 		this.signal = false;
 	}
 }
-/**
-This is the student thread. It will alternate between programming and seeking
-help from the TA.
-*/

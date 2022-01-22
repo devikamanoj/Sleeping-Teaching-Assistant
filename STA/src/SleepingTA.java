@@ -1,9 +1,9 @@
 import java.util.concurrent.Semaphore;
 import java.util.*;
-public class Main
+public class SleepingTA
 {
 	static Scanner in = new Scanner(System.in);
-	static int chair;
+	static int chair,TA_visit;
 	public static void main(String[] args)
 	{
 		System.out.println();
@@ -17,6 +17,8 @@ public class Main
 		SignalSemaphore wakeup = new SignalSemaphore();
 		System.out.print("\n Enter the number of chairs available: ");
 		chair=in.nextInt();
+		System.out.print("\n Enter the number of times students can visit the Assistant: ");
+		TA_visit=in.nextInt();
 		Semaphore chairs = new Semaphore(chair);
 		Semaphore available = new Semaphore(1);
 		// Used for randomly generating program time.
@@ -32,6 +34,3 @@ public class Main
 		ta.start();
 	}
 }
-/**
-* This semaphore implementation is used to "wakeup" the TA.
-*/
