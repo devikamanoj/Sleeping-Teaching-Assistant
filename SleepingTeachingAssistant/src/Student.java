@@ -18,20 +18,20 @@ class Student implements Runnable
 		chairs = c;
 		available = a;
 		studentNum = num;
-		t = Thread.currentThread();
+		t = Thread.currentThread(); //returns a reference to the currently executing thread object.
 	}
 	@Override 
 	public void run()
 	{
 		int i=0;
-	// Infinite loop.
 		for(;i<SleepingTA.TA_visit;)
 		{
 			try
 			{
 				// Program first.
 				System.out.println("\n Student " + studentNum + " has started programming ");
-				Thread.sleep(1);
+				Thread.sleep(1); //used to pause the execution of current thread for specified time in milliseconds
+
 				// Check to see if TA is available first.
 				System.out.println(" Student " + studentNum + " is checking to see if TA is available.");
 				if (available.tryAcquire())
@@ -39,7 +39,7 @@ class Student implements Runnable
 					try
 					{
 						// Wakeup the TA.
-						wakeup.take();
+						wakeup.take(); //goes to the method take in class SignalSemaphore
 						System.out.println("\n Student " + studentNum + " has woke up the TA.");
 						System.out.println(" Student " + studentNum + " has started working with the TA.");
 						Thread.sleep(1);
@@ -52,7 +52,7 @@ class Student implements Runnable
 					}
 					finally
 					{
-						available.release();
+						available.release(); //return to semaphore
 					}
 				}
 				else
