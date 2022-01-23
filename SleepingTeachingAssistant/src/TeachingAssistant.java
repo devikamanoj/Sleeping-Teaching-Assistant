@@ -26,13 +26,13 @@ public class TeachingAssistant implements Runnable
 				System.out.println("\n No students left. The TA is going to nap.");
 				wakeup.release();
 				System.out.println(" The TA was awoke by a student.");
-				Thread.sleep(5);
+				Thread.sleep(100);
 				// If there are other students waiting.
 				if (chairs.availablePermits() != SleepingTA.chair)
 				{
 					do
 					{
-						Thread.sleep(1);
+						Thread.sleep(100);
 						chairs.release();
 					}
 					while (chairs.availablePermits() != SleepingTA.chair);

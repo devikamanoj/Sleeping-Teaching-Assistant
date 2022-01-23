@@ -30,11 +30,11 @@ class Student implements Runnable
 			{
 				// Program first.
 				System.out.println("\n Student " + studentNum + " has started programming ");
-				Thread.sleep(1); //used to pause the execution of current thread for specified time in milliseconds
+				Thread.sleep(100); //used to pause the execution of current thread for specified time in milliseconds
 
 				// Check to see if TA is available first.
 				System.out.println(" Student " + studentNum + " is checking to see if TA is available.");
-				if (available.tryAcquire())
+				if (available.tryAcquire()) // checks if the TA is sleeping
 				{
 					try
 					{
@@ -42,7 +42,7 @@ class Student implements Runnable
 						wakeup.take(); //goes to the method take in class SignalSemaphore
 						System.out.println("\n Student " + studentNum + " has woke up the TA.");
 						System.out.println(" Student " + studentNum + " has started working with the TA.");
-						Thread.sleep(1);
+						Thread.sleep(100);
 						System.out.println(" Student " + studentNum + " has stopped working with the TA.");
 					}
 					catch (InterruptedException e)
