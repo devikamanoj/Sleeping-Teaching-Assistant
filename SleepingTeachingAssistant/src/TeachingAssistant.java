@@ -6,15 +6,11 @@ public class TeachingAssistant implements Runnable
 	// Semaphore used to wait in chairs outside office.
 	private Semaphore chairs;
 	// Mutex lock (binary semaphore) used to determine if TA is available.
-	private Semaphore available;
 	// A reference to the current thread.
-	private Thread t;
 	public TeachingAssistant(SignalSemaphore w, Semaphore c, Semaphore a)
 	{
-		t = Thread.currentThread();
 		wakeup = w;
 		chairs = c;
-		available = a;
 	}
 	@Override
 	public void run()
@@ -23,9 +19,9 @@ public class TeachingAssistant implements Runnable
 		{
 			try
 			{
-				System.out.println("\n No students left. The TA is going to nap.");
+				System.out.println("No students left. The TA is going to nap.");
 				wakeup.release();
-				System.out.println(" The TA was awoke by a student.");
+				System.out.println("The TA was woken up by a student.");
 				Thread.sleep(100);
 				// If there are other students waiting.
 				if (chairs.availablePermits() != SleepingTA.chair)

@@ -10,15 +10,15 @@ public class SleepingTA
 		System.out.println("			SLEEPING TEACHING ASSISTANT");
 		System.out.println("			---------------------------");
 		System.out.println();
-		System.out.print(" Enter the number of students in the lab: ");
+		System.out.print("Enter the number of students in the lab: ");
 		// Number of students.
 		int numberofStudents = in.nextInt();
 
 		// Create semaphores.
 		SignalSemaphore wakeup = new SignalSemaphore();
-		System.out.print("\n Enter the number of chairs available: ");
+		System.out.print("\nEnter the number of chairs available: ");
 		chair=in.nextInt();
-		System.out.print("\n Enter the number of times students can visit the Assistant: ");
+		System.out.print("\nEnter the number of times students can visit the Assistant: ");
 		TA_visit=in.nextInt();
 		Semaphore chairs = new Semaphore(chair);
 		Semaphore available = new Semaphore(1);
