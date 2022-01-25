@@ -23,13 +23,10 @@ public class SleepingTA
 		Semaphore chairs = new Semaphore(chair);
 		Semaphore available = new Semaphore(1);
 
-		// Used for randomly generating program time.
-		Random studentWait = new Random();
-
 		// Create student threads and start them.
 		for (int i = 0; i < numberofStudents; i++)
 		{
-			Thread student = new Thread(new Student(studentWait.nextInt(20), wakeup,chairs, available, i+1));
+			Thread student = new Thread(new Student(wakeup,chairs, available, i+1));
 			student.start();
 		}
 		

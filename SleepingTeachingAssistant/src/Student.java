@@ -12,7 +12,7 @@ class Student implements Runnable
 	// A reference to the current thread.
 	//private Thread t;
 	// Non-default constructor.
-	public Student(int program, SignalSemaphore w, Semaphore c, Semaphore a, int num)
+	public Student(SignalSemaphore w, Semaphore c, Semaphore a, int num)
 	{
 		wakeup = w;
 		chairs = c;
@@ -20,7 +20,6 @@ class Student implements Runnable
 		studentNum = num;
 		//t = Thread.currentThread(); //returns a reference to the currently executing thread object.
 	}
-	@Override 
 	public void run()
 	{
 		int i=0;
@@ -44,10 +43,10 @@ class Student implements Runnable
 						System.out.println("Student " + studentNum + " has started working with the TA.");
 						Thread.sleep(100);
 						System.out.println("Student " + studentNum + " has stopped working with the TA.");
+						i++;
 					}
 					catch (InterruptedException e)
 					{
-						// Something bad happened.
 						continue;
 					}
 					finally

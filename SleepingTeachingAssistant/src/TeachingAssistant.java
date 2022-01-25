@@ -12,7 +12,6 @@ public class TeachingAssistant implements Runnable
 		wakeup = w;
 		chairs = c;
 	}
-	@Override
 	public void run()
 	{
 		for(int i=0;i<SleepingTA.TA_visit;i++)
@@ -22,13 +21,13 @@ public class TeachingAssistant implements Runnable
 				System.out.println("No students left. The TA is going to nap.");
 				wakeup.release();
 				System.out.println("The TA was woken up by a student.");
-				Thread.sleep(100);
+				Thread.sleep(1);
 				// If there are other students waiting.
 				if (chairs.availablePermits() != SleepingTA.chair)
 				{
 					do
 					{
-						Thread.sleep(100);
+						Thread.sleep(1);
 						chairs.release();
 					}
 					while (chairs.availablePermits() != SleepingTA.chair);
